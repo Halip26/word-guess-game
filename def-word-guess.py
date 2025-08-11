@@ -11,6 +11,7 @@ def get_player_name():
 
 
 def display_word(word, guessed_letters):
+    print("-" * 35)
     for letter in word:
         if letter in guessed_letters:
             print(letter, end=" ")
@@ -25,6 +26,7 @@ def play_game():
     guessed_letters = ""
     chances = 10
 
+    print("-" * 35)
     print("Okay! {}, let's start guessing.".format(player_name))
 
     while chances > 0:
@@ -34,6 +36,7 @@ def play_game():
         display_word(word, guessed_letters)
 
         if all(letter in guessed_letters for letter in word):
+            print("-" * 35)
             print(
                 "Congratulations! {} You guessed all the letters correctly.".format(
                     player_name
@@ -44,10 +47,12 @@ def play_game():
 
         if guess not in word:
             chances -= 1
+            print("-" * 35)
             print("Wrong guess. This letter is not in the word.")
             print("You have {} more guess chances.".format(chances))
 
             if chances == 0:
+                print("-" * 35)
                 print("Sorry! Your number of chances are over. You lose.")
                 print("The correct word was: {}".format(word))
                 break
